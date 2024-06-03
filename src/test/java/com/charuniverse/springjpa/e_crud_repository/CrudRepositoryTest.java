@@ -24,7 +24,7 @@ public class CrudRepositoryTest {
 
     @Test
     void testUpdate() {
-        Category category = categoryRepository.findById(1L).orElse(null);
+        Category category = categoryRepository.findById(26L).orElse(null);
         Assertions.assertNotNull(category);
 
         category.setName("Electronics Terbaru");
