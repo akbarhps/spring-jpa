@@ -1,5 +1,6 @@
 package com.charuniverse.springjpa.repository;
 
+import com.charuniverse.springjpa.entity.Category;
 import com.charuniverse.springjpa.entity.Product;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
@@ -12,6 +13,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
@@ -33,6 +35,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<Product> searchProduct(@Param("name") String name, Pageable pageable);
 
     Page<Product> findAllByCategory_Name(String name, Pageable pageable);
+
+    Stream<Product> streamAllByCategory(Category category);
 
     @Transactional
     int deleteByName(String name);
