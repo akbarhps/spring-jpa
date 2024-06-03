@@ -1,6 +1,7 @@
 package com.charuniverse.springjpa.repository;
 
 import com.charuniverse.springjpa.entity.Product;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -12,6 +13,7 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
+    @Transactional
     int deleteByName(String name);
 
     boolean existsByName(String name);
