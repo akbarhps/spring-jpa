@@ -5,6 +5,7 @@ import com.charuniverse.springjpa.entity.Product;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -37,6 +38,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findAllByCategory_Name(String name, Pageable pageable);
 
     Stream<Product> streamAllByCategory(Category category);
+
+    Slice<Product> findALlByCategory(Category category, Pageable pageable);
 
     @Transactional
     int deleteByName(String name);
